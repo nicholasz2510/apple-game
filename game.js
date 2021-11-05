@@ -12,7 +12,7 @@ title.anchor.set(0.5);
 title.x = app.screen.width / 2;
 title.y = app.screen.height / 2;
 app.stage.addChild(title);
-title.hitArea = new PIXI.Circle(-150, 10, 60);
+title.hitArea = new PIXI.Circle(-150, 15, 60);
 title.interactive = true;
 title.buttonMode = true;
 title.on('pointerdown', startGame);
@@ -29,14 +29,15 @@ resetButton.y = 198;
 resetButton.lineStyle(1, 0xFFFFFF);
 resetButton.drawRect(0, 0, 50, 20);
 resetButton.endFill();
-
 let resetButtonText = new PIXI.Text('Reset', {fontSize: 14, fill: 0xFFFFFF, fontWeight: 100});
 resetButtonText.anchor.set(0.5);
 resetButtonText.x = resetButton.width / 2;
 resetButtonText.y = resetButton.height / 2;
 resetButton.addChild(resetButtonText);
-
 frame.addChild(resetButton);
+resetButton.interactive = true;
+resetButton.buttonMode = true;
+resetButton.on('pointerdown', reset)
 
 function startGame() {
     title.visible = false;
@@ -48,4 +49,8 @@ function game() {
     app.ticker.add((delta) => {
 
     });
+}
+
+function reset() {
+    title.visible = true;
 }
